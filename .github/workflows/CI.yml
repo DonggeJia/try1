@@ -61,8 +61,8 @@ jobs:
           julia --project=docs -e '
             import Pkg; Pkg.add("Documenter")
             using Documenter: doctest
-            using CellListMap
-            doctest(CellListMap)'
+            using try1
+            doctest(try1)'
       - run: julia --project=docs docs/make.jl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
