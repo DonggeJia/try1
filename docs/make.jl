@@ -6,9 +6,9 @@ DocMeta.setdocmeta!(try1, :DocTestSetup, :(using try1); recursive=true)
 makedocs(;
     modules=[try1],
     authors="Dongge Jia",
-    sitename="try1.jl",
+    sitename="try1",
     format=Documenter.HTML(;
-        canonical="https://DonggeJia.github.io/try1.jl",
+        canonical="https://DonggeJia.github.io/try1",
         edit_link="main",
         assets=String[],
     ),
@@ -18,6 +18,6 @@ makedocs(;
 )
 
 deploydocs(;
-    repo="github.com/DonggeJia/try1.jl",
+    repo="github.com/DonggeJia/try1",
     devbranch="main"
 )
