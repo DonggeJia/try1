@@ -19,5 +19,5 @@ makedocs(;
 
 deploydocs(;
     repo="github.com/DonggeJia/try1.jl",
-    devbranch="main",
+    devbranch="main"
 )
