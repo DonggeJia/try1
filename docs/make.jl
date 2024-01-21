@@ -24,6 +24,6 @@ makedocs(;
 deploydocs(
     repo="github.com/DonggeJia/try1.git",
     devbranch="main",
-    tag = isdefined(Main, :TAG) ? Main.TAG : "",
-    push_preview = true, # Optional, for previewing changes in pull requests
+    tag = "0.2.1"
+    #push_preview = true, # Optional, for previewing changes in pull requests
 )
