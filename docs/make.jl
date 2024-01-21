@@ -17,13 +17,10 @@ makedocs(;
     ],
 )
 
-# deploydocs(;
-#     repo="github.com/DonggeJia/try1",
-#     devbranch="main"
-# )
-deploydocs(
-    repo="github.com/DonggeJia/try1.git",
+deploydocs(;
+    repo="github.com/DonggeJia/try1",
     devbranch="main",
-    tag = "0.2.1"
-    #push_preview = true, # Optional, for previewing changes in pull requests
+    push_preview = true,
+    versions = ["stable" => "v^", "v#.#", "dev-main" => "main"]
 )
+

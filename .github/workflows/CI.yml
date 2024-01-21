@@ -47,23 +47,26 @@ jobs:
     name: Documentation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: julia-actions/setup-julia@v1
+      - uses: actions/checkout@v2
         with:
-          version: '1'
-      - run: |
-          julia --project=docs -e '
-            import Pkg; Pkg.add("Documenter")
-            using Pkg
-            Pkg.develop(PackageSpec(path=pwd()))
-            Pkg.instantiate()'
-      - run: |
-          julia --project=docs -e '
-            import Pkg; Pkg.add("Documenter")
-            using Documenter: doctest
-            using try1
-            doctest(try1)'
-      - run: julia --project=docs docs/make.jl
+          fetch-depth: 0  # Fetch the entire history for proper version detection
+  
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.x'
+  
+      - name: Install dependencies
+        run: julia --project=@. -e 'using Pkg; Pkg.instantiate()'
+  
+      - name: Build and deploy documentation
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
+        run: |
+          julia --project=@. -e '
+            using Documenter
+            ENV["GITHUB_REPOSITORY"] = "DonggeJia/try1.jl"
+            ENV["GITHUB_REF"] = "${{ github.ref }}"
+            include("docs/make.jl")
+          '
