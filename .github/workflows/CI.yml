@@ -65,6 +65,7 @@ jobs:
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
         run: |
           julia --project=@. -e '
+            import Pkg; Pkg.add("Documenter")
             using Documenter
             ENV["GITHUB_REPOSITORY"] = "DonggeJia/try1"
             ENV["GITHUB_REF"] = "${{ github.ref }}"
